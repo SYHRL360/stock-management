@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	
+	<title>Save Product</title>
+</head>
+<body>
+<div class="container">
+	
+	<h3>Inventory Management</h3>
+	<hr>
+	
+	<p class="h4 mb-4">Simpan Produk</p>
+	
+	<form th:action="@{/products/save}"
+		  th:object="${product}" method="POST">
+			
+			
+		<!-- Add hidden form field to handle update -->
+		<input type="hidden" th:field="*{id}"/>
+		
+		<input type="text" th:field="*{productName}"
+			    class="form-control mb-4 col-4" placeholder="Nama Produk"/>
+			    
+		<input type="text" th:field="*{price}"
+			    class="form-control mb-4 col-4" placeholder="Price"/>
+		
+		<input type="text" th:field="*{quantity}"
+			    class="form-control mb-4 col-4" placeholder="Quantity"/>
+			      
+		<button type="submit" class="btn btn-info col-2">Simpan</button>
+	</form>
+	
+	<hr>
+	<a th:href="@{/products/list}">Kembali ke Daftar Produk</a>
+	
+</div>
+<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+<script	th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>
