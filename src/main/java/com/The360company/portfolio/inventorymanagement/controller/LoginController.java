@@ -54,10 +54,5 @@ public class LoginController {
 		return "index";
 	}
 	
-	// add request mapping for /error-page
-	@GetMapping("/error-page")
-	public String showErrorPage() {
-		return "error-page";
-	}
 	
 }

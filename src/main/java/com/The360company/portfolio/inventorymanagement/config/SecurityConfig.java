@@ -52,9 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 				.loginProcessingUrl("/authenticateTheUser")
 				.permitAll()
 			.and()
-			.logout().permitAll()
-			.and()
-			.exceptionHandling().accessDeniedPage("/error-page");
+			.logout().permitAll();
 	}
 	
 	// beans 

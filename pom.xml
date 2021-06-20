@@ -60,8 +60,16 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+		
+		<dependency>
+		  <groupId>org.hibernate</groupId>
+		  <artifactId>hibernate-validator-osgi-karaf-features</artifactId>
+		  <version>5.4.3.Final</version>
+		  <type>pom</type>
+		</dependency>
 	</dependencies>
-
+	
+	
 	<build>
 		<plugins>
 			<plugin>
