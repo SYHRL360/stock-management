@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head
+	th:replace="fragments/head-content :: baseHead(~{::title}, ~{::link})">
+
+<title>Tabel Barang Masuk</title>
+
+<!-- Custom styles for this page -->
+<link th:href="@{/vendor/datatables/dataTables.bootstrap4.min.css}"
+	rel="stylesheet">
+</head>
+
+<body id="page-top">
+
+	<!-- Page Wrapper -->
+	<div id="wrapper">
+
+		<!-- Sidebar -->
+		<ul th:replace="fragments/sidebar :: sidebar-fragment"></ul>
+		<!-- End of Sidebar -->
+
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<!-- Main Content -->
+			<div id="content">
+
+				<!-- Topbar -->
+				<nav th:replace="fragments/topbar :: topbar-fragment"></nav>
+				<!-- End of Topbar -->
+
+				<!-- Begin Page Content -->
+				<div class="container-fluid">
+
+					<!-- Page Heading -->
+
+					<!-- DataTales Example -->
+					<div class="card shadow mb-4">
+						<div class="card-header py-3">
+							<div class="row">
+								<div class="col-sm-12 col-md-6">
+									<h5 class="m-0 pt-1">Tabel Barang Masuk</h5>
+								</div>
+								<div class="col-sm-12 col-md-6 text-right">
+									<a th:href="@{/products-in/showFormForAdd}"
+										class="btn btn-success btn-icon-split"> <span
+										class="icon text-white-50"> <i class="fa fa-plus"></i>
+									</span> <span class="text">Tambah Barang</span>
+									</a> <a th:href="@{/products-in/export}" target="_blank"
+										class="btn btn-primary btn-icon-split"> <span
+										class="icon text-white-50"> <i
+											class="fa fa-file-export"></i>
+									</span> <span class="text">Export Tabel</span>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-bordered" id="dataTable" width="100%"
+									cellspacing="0">
+									<thead>
+										<tr>
+											<th>No.</th>
+											<th>Tanggal</th>
+											<th>Nama Barang</th>
+											<th>Harga</th>
+											<th>Jumlah</th>
+											<th>Sub Total</th>
+											<th class="text-center">Pilihan</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="tempProductIn, iProduct:${productInList}">
+											<td th:text="${iProduct.count}" />
+											<td th:text="${tempProductIn.currentDate}" />
+											<td th:text="${tempProductIn.product.productName}" />
+											<td
+												th:text="'Rp. '+${#numbers.formatDecimal(tempProductIn.product.price, 0, 'POINT', 0, 'COMMA')}" />
+											<td th:text="${tempProductIn.quantity}">
+											<td
+												th:text="'Rp. '+${#numbers.formatDecimal(tempProductIn.subtotal, 0, 'POINT', 0, 'COMMA')}" />
+											<td class="text-center">
+												<!-- Add "update" button/link --> <a
+												th:href="@{/products-in/showUpdateForm(productInId=${tempProductIn.id})}"
+												class="btn btn-warning btn-icon-split btn-sm"> <span
+													class="icon text-white-50"> <i
+														class="fas fa-pencil-alt"></i>
+												</span> <span class="text">Update</span>
+											</a> <!-- Add "delete" button/link --> <a
+												th:href="@{/products-in/delete(productInId=${tempProductIn.id})}"
+												class="btn btn-danger btn-icon-split btn-sm"
+												onclick="if (!(confirm('Apakah anda yakin ingin menghapus produk ini?'))) return false">
+													<span class="icon text-white-50"> <i
+														class="fas fa-trash"></i>
+												</span> <span class="text">Hapus</span>
+											</a>
+											</td>
+										</tr>
+									</tbody>
+									<tfoot>
+										<tr>
+											<th colspan="5">Total Harga Barang</th>
+											<th colspan="2"
+												th:text="'Rp. '+${#numbers.formatDecimal(totalPriceProduct, 0, 'POINT', 0, 'COMMA')}"></th>
+										</tr>
+									</tfoot>
+								</table>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<!-- /.container-fluid -->
+
+			</div>
+			<!-- End of Main Content -->
+
+			<!-- Footer -->
+			<footer th:replace="fragments/footer :: footer-fragment"></footer>
+			<!-- End of Footer -->
+
+		</div>
+		<!-- End of Content Wrapper -->
+
+	</div>
+	<!-- End of Page Wrapper -->
+
+	<!-- Scroll to Top Button-->
+	<th:block th:replace="fragments/scroll-top :: scroll-fragment"></th:block>
+
+
+	<!-- Bootstrap core JavaScript-->
+	<th:block
+		th:replace="fragments/script-content :: baseScript(~{::script})">
+		<!-- Page level plugins -->
+		<script th:src="@{/vendor/datatables/jquery.dataTables.min.js}"></script>
+		<script th:src="@{/vendor/datatables/dataTables.bootstrap4.min.js}"></script>
+		<!-- Page level custom scripts -->
+		<script th:src="@{/js/demo/datatables-demo.js}"></script>
+
+		<script th:src="@{/js/script.js}"></script>
+	</th:block>
+
+</body>
+
+</html>

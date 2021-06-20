@@ -1,48 +1,118 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+
+<head
+	th:replace="fragments/head-content :: baseHead(~{::title}, ~{})">
 	
-	<!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-	
-	<title>Save Product</title>
+	<title>From Barang</title>
 </head>
-<body>
-<div class="container">
-	
-	<h3>Inventory Management</h3>
-	<hr>
-	
-	<p class="h4 mb-4">Simpan Produk</p>
-	
-	<form th:action="@{/products/save}"
-		  th:object="${product}" method="POST">
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul th:replace="fragments/sidebar :: sidebar-fragment"></ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav th:replace="fragments/topbar :: topbar-fragment"></nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-4 text-gray-800">Simpan Produk</h1>
+
+					<div class="row">
+						<div class="col-lg-12">
+						
+							<!-- Default card -->
+							<div class="card mb-4">
+								
+								<div class="card-header">
+									<b>Form Produk</b>
+								</div>
+								<div class="card-body">
+									<form action="#" th:action="@{/products/save}" th:object="${product}" method="POST">
+										
+										<!-- Add hidden form field to handle update-->
+										<input type="hidden" th:field="*{id}"/>
+										
+										<div class="form-group">
+									    	<label for="productName">Nama Produk</label>
+									    	<input type="text" th:field="*{productName}"
+			   								   class="form-control mb-4 col-5" id="productName" placeholder="Nama Produk" required/>
+										</div>
 			
-			
-		<!-- Add hidden form field to handle update -->
-		<input type="hidden" th:field="*{id}"/>
-		
-		<input type="text" th:field="*{productName}"
-			    class="form-control mb-4 col-4" placeholder="Nama Produk"/>
-			    
-		<input type="text" th:field="*{price}"
-			    class="form-control mb-4 col-4" placeholder="Price"/>
-		
-		<input type="text" th:field="*{quantity}"
-			    class="form-control mb-4 col-4" placeholder="Quantity"/>
-			      
-		<button type="submit" class="btn btn-info col-2">Simpan</button>
-	</form>
-	
-	<hr>
-	<a th:href="@{/products/list}">Kembali ke Daftar Produk</a>
-	
-</div>
-<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
-<script	th:src="@{/js/bootstrap.min.js}"></script>
+										<input type="hidden" th:field="*{quantity}"/>
+										       
+										<div class="form-group">
+											<label for="priceProduct">Harga (Dalam Rp)</label>
+											<input type="number" th:field="*{price}"
+											   class="form-control mb-4 col-5" id="priceProduct" placeholder="Harga" min="100" required/>
+										</div> 
+										       
+										<hr>     
+										       
+										
+										<a th:href="@{/products/list}" class="btn btn-secondary btn-icon-split">
+											<span class="icon text-white-50">
+												<i class="fas fa-window-close"></i>
+											</span>
+											<span class="text">Batal</span>
+										</a>  
+										       
+										<button type="submit" class="btn btn-primary btn-icon-split">
+											<span class="icon text-white-50">
+												<i class="fas fa-save"></i>
+											</span>
+											<span class="text">Simpan</span>
+										</button>
+										
+										
+									</form>
+									
+								</div>
+								
+							</div>
+						
+						</div>
+					</div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer th:replace="fragments/footer :: footer-fragment"></footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <th:block th:replace="fragments/scroll-top :: scroll-fragment"></th:block>
+   
+    <!-- Bootstrap core JavaScript-->
+    
+    <th:block th:replace="fragments/script-content :: baseScript(~{})">
+    
+    </th:block>
+
 </body>
+
 </html>

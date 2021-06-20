@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en"
+	  xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="fragments/head-content :: baseHead(~{::title}, ~{})">
+	<title>Form Barang Masuk</title>
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->   
+        <ul th:replace="fragments/sidebar :: sidebar-fragment"></ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav th:replace="fragments/topbar :: topbar-fragment"></nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+					
+					<h3 class="h3 mb-4 text-gray-800">Produk Masuk</h3>
+					
+					<div class="row">
+						<div class="col-lg-12">
+						
+							<!-- Default card -->
+							<div class="card mb-4">
+								
+								<div class="card-header">
+									<b>Form Produk</b>
+								</div>
+								<div class="card-body">
+									
+									<!-- Form Input Barang Masuk -->
+									<form action="#" th:action="@{/products-in/save}" th:object="${productIn}" method="POST">
+										
+										<!-- Add hidden form field to handle update-->
+										<input type="hidden" th:field="*{id}"/>
+										
+										<!-- Nama Barang -->
+										<div class="form-group">
+									    	<label for="namaBarang">Nama Barang</label>
+									    
+									    	<select class="form-control col-5" th:field="*{product}" id="namaBarang">
+									    		<option th:each="tempProduct : ${productList}" th:value="${tempProduct.id}" th:text="${tempProduct.productName}"></option>
+									    	</select>
+										</div>
+			
+										<!-- Jumlah Barnag -->						
+										<div class="form-group">
+											<label for="jumlahBarang">Jumlah</label>
+											<input type="number" th:field="*{quantity}"
+										       class="form-control col-5" id="jumlahBarang" aria-describedby="numberHelp" placeholder="Jumlah" min="1" required/>
+										</div>
+										       
+										<!--  Tanggal barang masuk -->       
+										<div class="form-group">
+											<label for="tanggal">Tanggal</label>
+											<input type="date" th:field=*{currentDate}
+											   class="form-control col-5" id="tanggal" required/>
+										</div> 
+										       
+										<hr>     
+										       
+										<!-- Form Button -->
+										<a th:href="@{/products-in/list}" class="btn btn-secondary btn-icon-split">
+											<span class="icon text-white-50">
+												<i class="fas fa-window-close"></i>
+											</span>
+											<span class="text">Batal</span>
+										</a>  
+										       
+										<button type="submit" class="btn btn-primary btn-icon-split">
+											<span class="icon text-white-50">
+												<i class="fas fa-save"></i>
+											</span>
+											<span class="text">Simpan</span>
+										</button>
+										
+										
+									</form>
+									<!-- End Form input Barang Masuk -->
+									
+								</div>
+								
+							</div>
+						
+						</div>
+					</div>
+                   
+                    
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer th:replace="fragments/footer :: footer-fragment"></footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <th:block th:replace="fragments/scroll-top :: scroll-fragment"></th:block>
+    
+    
+    <!-- Bootstrap core JavaScript-->
+    <th:block th:replace="fragments/script-content :: baseScript(~{})">
+    
+    </th:block>
+
+</body>
+
+</html>

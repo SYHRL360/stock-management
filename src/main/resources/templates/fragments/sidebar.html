@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+				xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+
+	<!-- Side bar fragment -->
+	<ul th:fragment="sidebar-fragment" class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion"
+		id="accordionSidebar">
+
+		<!-- Sidebar - Brand -->
+		<div 
+			class="sidebar-brand d-flex align-items-center justify-content-center">
+			<div class="sidebar-brand-icon">
+	                 <i class="fas fa-user"></i>
+	              </div>
+			<span class="sidebar-brand-text mx-3" sec:authentication="name"></span>
+		</div>
+
+		<!-- Divider -->
+		<hr class="sidebar-divider my-0">
+
+		<!-- Nav Item - Dashboard -->
+		<li class="nav-item"><a class="nav-link" th:href="@{/}"> <i
+				class="fas fa-fw fa-home"></i> <span>Beranda</span></a></li>
+
+		<!-- Divider -->
+		<hr class="sidebar-divider my-0">
+
+		<!-- Stock Inventory Barang -->
+		<li class="nav-item"><a class="nav-link" th:href="@{/products/list}"> <i
+				class="fas fa-fw fa-list-alt"></i> <span>Daftar Barang</span></a></li>
+				
+		<!-- Divider -->	
+		<hr class="sidebar-divider my-0">	
+
+		<!-- Nav Item - Pages Collapse Menu -->
+		<li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-dolly"></i>
+                <span>Transaksi Barang</span>
+            </a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" th:href="@{/products-in/list}">Barang Masuk</a>
+                    <a class="collapse-item" th:href="@{/products-out/list}">Barang Keluar</a>
+                </div>
+            </div>
+        </li>
+
+		<!-- Nav Item - Utilities Collapse Menu -->
+
+		<!-- Divider -->
+		
+
+
+		<!-- Nav Item - Pages Collapse Menu -->
+
+		<!-- Divider -->
+		
+
+
+		<!-- Nav Item - Charts -->
+	
+		<!-- Divider -->
+		<hr class="sidebar-divider my-0"> 
+
+		<!-- Nav Item - Tables -->
+		
+		<li class="nav-item">
+			<form th:action="@{/logout}" method="POST" class="nav-link">
+				<i class="fas fa-fw fa-power-off"></i>
+				<button type="submit" class="btn btn-link text-gray-300">
+					<span>Logout</span>
+				</button>
+			</form>
+		</li> 
+		
+		
+		<!-- Divider -->
+		<hr class="sidebar-divider d-none d-md-block">
+
+		<!-- Sidebar Toggler (Sidebar) -->
+		<div class="text-center d-none d-md-inline">
+			<button class="rounded-circle border-0" id="sidebarToggle"></button>
+		</div>
+
+	</ul>
+
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/head-content :: baseHead(~{::title}, ~{})">
+	
+	<title>Sistem Stock Barang</title>
+	
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul th:replace="fragments/sidebar :: sidebar-fragment"></ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav th:replace="fragments/topbar :: topbar-fragment"></nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+					<!-- Page Heading -->
+					<div
+						class="d-sm-flex align-items-center justify-content-between mb-4">
+						<h1 class="h3 mb-0 text-gray-800 text-capitalize">
+							Selamat datang <span sec:authentication="name"></span> <i class="fas fa-hand-sparkles text-warning"></i>
+						</h1>
+					</div>
+
+					<div class="row">
+
+						<!-- CARD 1 -->
+						<div class="col-xl-4 col-md-6 mb-4">
+							<div class="card border-left-primary shadow h-100 pt-2">
+								<div class="card-body">
+									<div class="row no-gutters align-items-center">
+										<div class="col mr-2">
+											<div
+												class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+												Total Barang Saat Ini</div>
+											<div class="h5 mb-1 text-gray-700" th:text="${totalQuantityProduct}+' barang'"></div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800" th:text="'Rp. '+${#numbers.formatDecimal(totalPriceProduct, 0, 'POINT', 0, 'COMMA')}"></div>
+										</div>
+										<div class="col-auto">
+											<i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+										</div>
+									</div>
+								</div>
+								<div
+									class="card-footer d-flex align-items-center justify-content-between">
+									<a class="small text-gray-500 stretched-link" th:href="@{/products/list}">View
+										Details</a>
+									<div class="small text-gray-500">
+										<i class="fas fa-angle-right"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- End CARD 1 -->
+
+						<!-- CARD 2 -->
+						<div class="col-xl-4 col-md-6 mb-4">
+							<div class="card border-left-success shadow h-100 pt-2">
+								<div class="card-body">
+									<div class="row no-gutters align-items-center">
+										<div class="col mr-2">
+											<div
+												class="text-xs font-weight-bold text-success text-uppercase mb-1">
+												Total Barang Masuk</div>
+											<div class="h5 mb-1 text-gray-700" th:text="${totalQuantityProductIn}+' barang'"></div> 	
+											<div class="h5 mb-0 font-weight-bold text-gray-800" th:text="'Rp. '+${#numbers.formatDecimal(totalPriceProductIn, 0, 'POINT', 0, 'COMMA')}"></div>
+										</div>
+										<div class="col-auto">
+											<i class="fas fa-boxes fa-2x text-gray-300"></i>
+										</div>
+									</div>
+								</div>
+								<div
+									class="card-footer d-flex align-items-center justify-content-between">
+									<a class="small text-gray-500 stretched-link" th:href="@{/products-in/list}">View
+										Details</a>
+									<div class="small text-gray-500">
+										<i class="fas fa-angle-right"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- End CARD 2 -->
+
+						<!-- CARD 3 -->
+						<div class="col-xl-4 col-md-6 mb-4">
+							<div class="card border-left-warning shadow h-100 pt-2">
+								<div class="card-body">
+									<div class="row no-gutters align-items-center">
+										<div class="col mr-2">
+											<div
+												class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Barang Keluar
+											</div>
+											<div class="h5 mb-1 text-gray-700" th:text="${totalQuantityProductOut}+' barang'"></div>
+											<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800" th:text="'Rp. '+${#numbers.formatDecimal(totalPriceProductOut, 0, 'POINT', 0, 'COMMA')}"></div>
+										</div>
+										<div class="col-auto">
+											<i class="fas fa-truck-loading fa-2x text-gray-300"></i>
+										</div>
+									</div>
+								</div>
+								<div
+									class="card-footer d-flex align-items-center justify-content-between">
+									<a class="small text-gray-500 stretched-link" th:href="@{/products-out/list}">View
+										Details</a>
+									<div class="small text-gray-500">
+										<i class="fas fa-angle-right"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- End CARD 3 -->
+					
+					</div>
+
+
+				</div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer th:replace="fragments/footer :: footer-fragment"></footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <th:block th:replace="fragments/scroll-top :: scroll-fragment"></th:block>
+
+
+    <!-- Bootstrap core JavaScript-->
+    <th:block th:replace="fragments/script-content :: baseScript(~{::script})">
+    	
+		<script th:src="@{/js/script.js}"></script>
+    </th:block>
+
+</body>
+
+</html>

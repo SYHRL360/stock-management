@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en"
+	  xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Halaman Registrasi</title>
+
+    <!-- Custom fonts for this template-->
+    <link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template-->
+    <link th:href="@{/css/sb-admin-2.min.css}" rel="stylesheet">
+
+</head>
+
+<body class="bg-gradient-secondary">
+
+    <div class="container">
+		<div class="row justify-content-center">
+			<div class="col-xl-6 col-lg-12 col-md-9">
+		        <div class="card o-hidden border-0 shadow-lg my-5">
+		            <div class="card-body p-0">
+		                <!-- Nested Row within Card Body -->
+		                <div class="row">
+		                    
+		                    <div class="col-lg-10 offset-lg-1">
+		                        <div class="p-5">
+		                        	<!-- Form Title  -->
+		                            <div class="text-center">
+		                                <h1 class="h4 text-gray-900 mb-4">Halaman Registrasi</h1>
+		                            </div>
+		                            
+		                            <!-- Registration Form -->
+		                            <form th:action="@{/register/processRegistration}" th:object="${userRegister}" method="POST">
+		                                
+		                                <!-- Place for message: error, alert etc ...-->
+										<div th:if="${registrationSuccess}" class="form-group">
+											<div class="alert alert-info alert-dismissible fade show"
+												role="alert">
+												<span th:text="${registrationSuccess}"></span>
+												<button type="button" class="close" data-dismiss="alert"
+													aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+										</div>
+
+										<!-- Check for registration error -->
+			                             <div th:if="${registrationError}" class="form-group">
+			                            	<div class="alert alert-danger alert-dismissible fade show" role="alert">
+												<span th:text="${registrationError}"></span>
+												<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												   <span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+			                             </div>
+			                             
+		                                <!-- User Name -->
+		                                <div th:if="${#fields.hasErrors('userName')}"
+											style="margin-bottom: 25px" class="text-danger">
+											<ul>
+											  <li th:each="err : ${#fields.errors('userName')}" th:text="'User name ' + ${err}" />
+											</ul>						
+										</div>
+		                                
+		                                 <div class="form-group">
+		                               		<input type="text" th:field="*{userName}" class="form-control form-control-user" id="exampleUserName"
+		                                   	placeholder="User Name" th:errorclass="fieldError">
+		                               	 </div>
+		                        
+		                        		<!-- Password -->
+		                        		<div th:if="${#fields.hasErrors('password')}"
+											style="margin-bottom: 25px" class="text-danger">
+											<ul>
+											  <li th:each="err : ${#fields.errors('password')}" th:text="'Password ' + ${err}" />
+											</ul>						
+										</div>
+		                                 <div class="form-group">
+		                                     <input type="password" th:field="*{password}" class="form-control form-control-user"
+		                                         id="exampleInputPassword" placeholder="Password" th:errorclass="fieldError">
+		                                 </div>
+		                                 
+		                                 <!-- Confirm Password -->
+		                                 <div th:if="${#fields.hasErrors('matchingPassword')}"
+											style="margin-bottom: 25px" class="text-danger">
+											<ul>
+											  <li th:each="err : ${#fields.errors('matchingPassword')}" th:text="'Password ' + ${err}" />
+											</ul>						
+										 </div>
+		                                 <div class="form-group">
+		                                     <input type="password" th:field="*{matchingPassword}" class="form-control form-control-user"
+		                                         id="exampleRepeatPassword" placeholder="Confirm Password" th:errorclass="fieldError">
+		                                 </div>
+		                                 
+		                                 <!-- First Name -->
+		                                 <div th:if="${#fields.hasErrors('firstName')}"
+											style="margin-bottom: 25px" class="text-danger">
+											<ul>
+											  <li th:each="err : ${#fields.errors('firstName')}" th:text="'First name ' + ${err}" />
+											</ul>						
+										 </div>
+		                                 <div class="form-group">
+		                               		<input type="text" th:field="*{firstName}" class="form-control form-control-user" id="exampleFirstName"
+		                                   	placeholder="First Name" th:errorclass="fieldError">
+		                               	 </div>
+		                               	 
+		                               	 <!-- Last Name -->
+		                               	 <div th:if="${#fields.hasErrors('lastName')}"
+											style="margin-bottom: 25px" class="text-danger">
+											<ul>
+											  <li th:each="err : ${#fields.errors('lastName')}" th:text="'Last name ' + ${err}" />
+											</ul>						
+										 </div>
+		                               	 <div class="form-group">
+		                                   <input type="text" th:field="*{lastName}" class="form-control form-control-user" id="exampleLastName"
+		                                       placeholder="Last Name" th:errorclass="fieldError">
+		                              	 </div>
+		                              	 
+										 
+		                              	 <!-- Email -->
+		                              	 <div th:if="${#fields.hasErrors('email')}"
+											style="margin-bottom: 25px" class="text-danger">
+											<ul>
+											  <li th:each="err : ${#fields.errors('email')}" th:text="'Email ' + ${err}" />
+											</ul>						
+										 </div>
+		                                 <div class="form-group">
+		                                    <input type="text" th:field="*{email}" class="form-control form-control-user" id="exampleInputEmail"
+		                                        placeholder="Email Address" th:errorclass="fieldError">
+		                                 </div>
+		                                 
+		                                 <button type="submit" class="btn btn-primary btn-user btn-block">
+		                                    Register Account
+		                                 </button>
+		                            </form>
+		                            <!-- End Registration Form -->
+		                            
+		                            <hr>
+		                            <div class="text-center">
+		                                <a class="small" th:href="@{/showLoginPage}">Login Jika Sudah Mempunyai Akun</a>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+	        </div>
+        </div>
+        
+
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script th:src="@{/vendor/jquery-easing/jquery.easing.min.js}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script th:src="@{/js/sb-admin-2.min.js}"></script>
+
+</body>
+
+</html>

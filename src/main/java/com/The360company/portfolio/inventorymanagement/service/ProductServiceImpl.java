@@ -10,7 +10,7 @@ import com.The360company.portfolio.inventorymanagement.dao.ProductRepository;
 import com.The360company.portfolio.inventorymanagement.entity.Product;
 
 @Service
-public class ProductServiceImpl implements ProductService {
+public class ProductServiceImpl implements ProductService<Product> {
 
 	private ProductRepository productRepository;
 	
@@ -51,19 +51,54 @@ public class ProductServiceImpl implements ProductService {
 		this.productRepository.deleteById(id);
 	}
 
+	/*
+	
+	 this method is unnecessary because we already have dataTable input filter
+	 
 	@Override
 	public List<Product> searchBy(String name) {
 	
 		List<Product> result = null;
 		
 		if(name != null && (name.trim().length() > 0)) {
-			result = this.productRepository.findByProductNameContainsAllIgnoreCase(name);
+			result = this.productRepository.findByProductNameContainingIgnoreCase(name);
 		} else {
 			result = findAll();
 		}
 		
 		return result;
 	}
+	*/
+
+	@Override
+	public int totalPrice() {
+		
+		
+		List<Product> products = this.findAll();
+		
+		int total = 0;
+		
+		for(Product product : products) {
+			total += product.getSubtotal();
+		}
+		
+		return total;
+	}
+
+	@Override
+	public int totalQuantity() {
+		
+		List<Integer> listQauntity = this.productRepository.getAllQuantity();
+		
+		int total = 0;
+		
+		for(Integer quantity : listQauntity) {
+			total += quantity;
+		}
+		
+		return total;
+	}
+
 
 	
 }

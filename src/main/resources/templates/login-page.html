@@ -1,73 +1,123 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+	  xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>Halaman Login</title>
-	
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-	
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Halaman Login</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
 </head>
-<body>
-	<div class="container">
-		<div style="margin-top: 50px" class="col-md-4 offset-md-4">
-			
-			<div class="card border-secondary">
-				<div class="card-header text-center text-white bg-secondary">
-					<h5 class="card-title">Login Page</h5>
-				</div>
-				
-				<div class="card-body">
-					
-					<form th:action="@{/authenticateTheUser}" method="POST">
 
-						<div th:if="${param.error}">
-							<div class="alert alert-danger alert-dismissible fade show" role="alert">
-								Invalid username or password.
-								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-								   <span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-						</div>
-						
-						<div th:if="${param.logout}">
-							<div class="alert alert-success alert-dismissible fade show" role="alert">
-								You have been logged out.
-								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-								   <span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label for="username">User name</label>
-							<input type="text" class="form-control" name="username" placeholder="username"/>
-						</div>
-						
-						<div class="form-group">
-							<label for="password">Password</label>
-							<input type="password" class="form-control" name="password" placeholder="password"/>
-						</div>
-						
-						<div class="form-group">
-							<button type="submit" class="btn btn-success">Login</button>
-						</div>
-					
-					</form>
-				
-				</div>
-				
-			</div>
-		</div>
-	</div>
+<body class="bg-gradient-secondary">
 
+    <div class="container">
 
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
 
+            <div class="col-xl-6 col-lg-12 col-md-9">
 
-<script type="text/javascript" th:src="@{/js/jquery-3.3.1.min.js}"></script>
-<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-10 offset-lg-1">
+                                <div class="p-5">
+                                	<!-- Title login -->
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Halaman Login</h1>
+                                    </div>
+                                    
+                                    <!-- Place Message : error, notification etc -->
+                                    
+                                    <!-- Wrong Password -->
+                                    <div th:if="${param.error}">
+										<div class="alert alert-danger alert-dismissible fade show" role="alert">
+											Username atau Password salah.
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+											   <span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+									</div>
+									
+									<!-- Logout Notification -->
+									<div th:if="${param.logout}">
+										<div class="alert alert-success alert-dismissible fade show" role="alert">
+											Anda telah keluar
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+											   <span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+									</div>
+									
+									<!-- Registration Success -->
+									<div th:if="${registrationSuccess}">
+										<div class="alert alert-primary alert-dismissible fade show" role="alert">
+											<span th:text="${registrationSuccess}"></span>
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+									</div>
+
+									<!-- Form Login -->
+									<form th:action="@{/authenticateTheUser}" method="POST" class="user">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form-control-user"
+                                                name="username"
+                                                placeholder="Username">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control form-control-user"
+                                                name="password" placeholder="Password">
+                                        </div>
+                                        
+                                        
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">Masuk</button>
+                                
+                                    </form>
+                                    <!-- End Form Login -->
+                                    
+                                    <hr>
+                                    
+                                    <div class="text-center">
+                                    	<a class="small" th:href="@{/register/showRegistrationPage}">Buat Akun Baru</a>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
 </body>
+
 </html>
