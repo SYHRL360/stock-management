@@ -7,8 +7,8 @@
 <title>Tabel Barang Masuk</title>
 
 <!-- Custom styles for this page -->
-<link th:href="@{/vendor/datatables/dataTables.bootstrap4.min.css}"
-	rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
+
 </head>
 
 <body id="page-top">
@@ -135,10 +135,11 @@
 	<th:block
 		th:replace="fragments/script-content :: baseScript(~{::script})">
 		<!-- Page level plugins -->
-		<script th:src="@{/vendor/datatables/jquery.dataTables.min.js}"></script>
-		<script th:src="@{/vendor/datatables/dataTables.bootstrap4.min.js}"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+		
 		<!-- Page level custom scripts -->
-		<script th:src="@{/js/demo/datatables-demo.js}"></script>
+		<script th:src="@{/js/datatables-demo.js}"></script>
 
 		<script th:src="@{/js/script.js}"></script>
 	</th:block>
