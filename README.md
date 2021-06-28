@@ -62,12 +62,6 @@ git clone https://github.com/SYHRL360/stock-management.git
 
 Setup
 ------------------------------------------------------------------------------------
-1. Buka Eclipse IDE
-2. Pilih `File -> Import -> Maven -> Existing Maven project`
-3. Klik kanan pada project dan klik `Run As -> Maven install` untuk mengenerate file.
-4. Untuk menjalankan aplikasi klik kanan pada file yang memiliki main method pilih `Run As -> Java Application`
-5. Buka browser lalu kunjungi http://localhost:8080
-
 #### Database configuration
 1. Buka file `application.properties`
 2. Ubah configurasi databese seperti berikut :
@@ -91,6 +85,14 @@ app.datasource.password=password_pgadmin
 5. Pada jendala yang terbuka arahkan ke file `stock_management_heroku.sql` yang ada pada folder postgres_dump.
 6. Klik `Restore` dan pengaturan pada pgAdmin
 7. Lakukan setep 3-6 pada setiap tabel yang ingin di import.
+
+
+#### Jalankan Aplikasi
+1. Buka Eclipse IDE
+2. Pilih `File -> Import -> Maven -> Existing Maven project`
+3. Klik kanan pada project dan klik `Run As -> Maven install` untuk mengenerate file.
+4. Untuk menjalankan aplikasi klik kanan pada file yang memiliki main method pilih `Run As -> Java Application`
+5. Buka browser lalu kunjungi http://localhost:8080
 
 Screen Shoot
 ------------------------------------------------------------------------------------
