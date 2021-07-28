@@ -1,4 +1,5 @@
 # Sistem Managemen Stock Barang
+![daftar_barang](https://user-images.githubusercontent.com/81602971/123668356-39537780-d865-11eb-9c3b-8d921da34e95.PNG)
 
 Deskripsi
 ------------------------------------------------------------------------------------
@@ -61,12 +62,6 @@ git clone https://github.com/SYHRL360/stock-management.git
 
 Setup
 ------------------------------------------------------------------------------------
-1. Buka Eclipse IDE
-2. Pilih `File -> Import -> Maven -> Existing Maven project`
-3. Klik kanan pada project dan klik `Run As -> Maven install` untuk mengenerate file.
-4. Untuk menjalankan aplikasi klik kanan pada file yang memiliki main method pilih `Run As -> Java Application`
-5. Buka browser lalu kunjungi http://localhost:8080
-
 #### Database configuration
 1. Buka file `application.properties`
 2. Ubah configurasi databese seperti berikut :
@@ -91,8 +86,32 @@ app.datasource.password=password_pgadmin
 6. Klik `Restore` dan pengaturan pada pgAdmin
 7. Lakukan setep 3-6 pada setiap tabel yang ingin di import.
 
+
+#### Jalankan Aplikasi
+1. Buka Eclipse IDE
+2. Pilih `File -> Import -> Maven -> Existing Maven project`
+3. Klik kanan pada project dan klik `Run As -> Maven install` untuk mengenerate file.
+4. Untuk menjalankan aplikasi klik kanan pada file yang memiliki main method pilih `Run As -> Java Application`
+5. Buka browser lalu kunjungi http://localhost:8080
+
 Screen Shoot
 ------------------------------------------------------------------------------------
+1. Halaman Login
+![halaman_login](https://user-images.githubusercontent.com/81602971/123669531-62c0d300-d866-11eb-80e4-dc27eb22a010.PNG)
 
+2. Halaman Dashboard
+![halaman_dashboard](https://user-images.githubusercontent.com/81602971/123669888-ca771e00-d866-11eb-8486-4443a182da99.PNG)
 
+3. Daftar Barang
+![daftar_barang](https://user-images.githubusercontent.com/81602971/123669638-7ff5a180-d866-11eb-83fc-efc40af06deb.PNG)
+
+4. Form Barang Masuk
+![form_produk_masuk](https://user-images.githubusercontent.com/81602971/123669720-94399e80-d866-11eb-832c-1de3d560f9b7.PNG)
+
+5. Export Tabel Barang
+![export_barang](https://user-images.githubusercontent.com/81602971/123669809-b03d4000-d866-11eb-8265-9dceb21b0223.PNG)
+
+License
+------------------------------------------------------------------------------------
+[MIT License](https://opensource.org/licenses/MIT)
 
